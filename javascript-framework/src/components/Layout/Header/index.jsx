@@ -1,11 +1,11 @@
 
-import Nav from "../Nav";
+import Navbar from "../Nav";
+
 
 function Header() {
     return (
       <header>
-        <div>Header with Logo and nav</div>
-        <Nav />
+        <Navbar />
       </header>
     );
   }
