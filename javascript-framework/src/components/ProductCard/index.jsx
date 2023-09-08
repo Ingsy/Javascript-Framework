@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
 
 function ProductCard(props) {
-  const { title, price, description, imageUrl } = props;
+  const { title, price, discountedPrice, description, imageUrl, reviews } =
+    props;
 
   return (
     <div className="card">
@@ -9,7 +10,9 @@ function ProductCard(props) {
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{description}</p>
+        <p className="card-text">${discountedPrice}</p>
         <p className="card-text">${price}</p>
+        <p className="reviews">{reviews}</p>
         <button href="#" className="btn btn-primary">
           Add to Cart
         </button>
