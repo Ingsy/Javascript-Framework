@@ -1,38 +1,48 @@
-import {Link} from "react-router-dom";
-
-
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./Nav.module.css";
 
 const Navbar = () => {
-    return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="/">Online Shop</a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item active">
-            <Link to="/Homepage">Home</Link>
-            </li>
-            <li className="nav-item">
-            <Link to="/ProductPage">Products</Link>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    );
-  };
-  
-  export default Navbar;
+  return (
+    <nav className={`navbar navbar-expand-lg ${styles.navbar}`}>
+      <Link to="/" className={`navbar-brand ${styles.brand}`}>
+        Online Shop
+      </Link>
+      <button
+        className={`navbar-toggler ${styles.navbarToggler}`}
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className={`navbar-toggler-icon ${styles.togglerIcon}`}></span>
+      </button>
+      <div
+        className={`collapse navbar-collapse ${styles.navCollapse}`}
+        id="navbarNav"
+      >
+        <ul className={`navbar-nav ${styles.navList}`}>
+          <li className={`nav-item ${styles.navItem}`}>
+            <Link to="/Homepage" className={`nav-link ${styles.navLink}`}>
+              Home
+            </Link>
+          </li>
+          <li className={`nav-item ${styles.navItem}`}>
+            <Link to="/ProductPage" className={`nav-link ${styles.navLink}`}>
+              Products
+            </Link>
+          </li>
+          <li className={`nav-item ${styles.navItem}`}>
+            <Link to="/contact" className={`nav-link ${styles.navLink}`}>
+              Contact
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+};
 
+export default Navbar;

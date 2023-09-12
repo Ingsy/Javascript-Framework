@@ -1,0 +1,36 @@
+.navbar {
+  background-color: #aeb836;
+  min-height: 100px;
+}
+
+.brand {
+  color: #fff;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.togglerIcon {
+  color: #fff;
+}
+
+.navbarToggler {
+  margin-right: 10px;
+}
+
+.navCollapse {
+  justify-content: flex-end;
+}
+
+.navList {
+  margin-right: 20px;
+}
+
+.navItem {
+  margin-right: 15px;
+}
+
+.navLink {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
