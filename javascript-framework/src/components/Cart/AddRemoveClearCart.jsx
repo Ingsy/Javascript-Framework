@@ -1,7 +1,6 @@
 
 
 
-
 export function reducer(state, action) {
   let productIndex;
   let newTotal;
@@ -79,5 +78,7 @@ export function reducer(state, action) {
       return state;
   }
 }
+
+
 
 export default reducer;

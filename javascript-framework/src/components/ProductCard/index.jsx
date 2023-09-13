@@ -14,7 +14,7 @@ function ProductCard(props) {
         <p className="card-text">${price}</p>
         <p className="reviews">{reviews}</p>
         <button href="#" className="btn btn-primary">
-          Add to Cart
+          View product
         </button>
       </div>
     </div>
