@@ -1,7 +1,7 @@
 
 
 
-export function reducer(state, action) {
+export function AddRemoveClearCart(state, action) {
   let productIndex;
   let newTotal;
   let cart;
@@ -81,4 +81,4 @@ export function reducer(state, action) {
 
 
 
-export default reducer;
+export default AddRemoveClearCart;
