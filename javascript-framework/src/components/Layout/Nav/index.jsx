@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Nav.module.css";
+import CartIcon from "../../Cart/CartIcon";
 
 const Navbar = () => {
   return (
@@ -8,6 +9,7 @@ const Navbar = () => {
       <Link to="/" className={`navbar-brand ${styles.brand}`}>
         Online Shop
       </Link>
+      <CartIcon />
       <button
         className={`navbar-toggler ${styles.navbarToggler}`}
         type="button"
@@ -35,7 +37,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className={`nav-item ${styles.navItem}`}>
-            <Link to="/contact" className={`nav-link ${styles.navLink}`}>
+            <Link to="/ContactPage" className={`nav-link ${styles.navLink}`}>
               Contact
             </Link>
           </li>
