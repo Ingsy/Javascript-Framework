@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import BaseButton from "../Buttons";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -60,6 +61,13 @@ function ProductDetails() {
             <p className="card-text">${productPrice.toFixed(2)}</p>
           )}
           <p className="card-text">Description: {product.description}</p>
+          <BaseButton
+            className="btn-secondary"
+            type="button"
+            onClick={() => alert("this item was added to your cart")}
+          >
+            Add to Cart
+          </BaseButton>
           {product.reviews && product.reviews.length > 0 ? (
             <div>
               <h3>Reviews:</h3>

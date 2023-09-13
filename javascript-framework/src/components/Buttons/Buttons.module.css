@@ -1,0 +1,10 @@
+.CartBtn {
+  --bs-btn-padding-x: 5px;
+  --bs-btn-padding-y: 4px;
+  --bs-btn-font-size: 15px;
+  --bs-btn-hover-bg: #0871db;
+  border-color: none;
+  background-color: #ffc107;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
