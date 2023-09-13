@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import BaseButton from "../Buttons";
+import { CartContext } from "../Cart/cartContext";
 
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
   const [error, setError] = useState(null); // Add error state
+  const { addToCart } = useContext(CartContext); // Access addToCart function from CartContext
 
   useEffect(() => {
     // Fetch product data using the product ID from the URL
@@ -40,6 +42,11 @@ function ProductDetails() {
     ? productPrice - product.discountedPrice
     : 0;
 
+  const handleAddToCart = () => {
+    addToCart(product);
+    alert("This Item was added to your cart");
+  };
+
   return (
     <div className="container">
       <h2 className="mt-3">{product.title}</h2>
@@ -64,7 +71,7 @@ function ProductDetails() {
           <BaseButton
             className="btn-secondary"
             type="button"
-            onClick={() => alert("this item was added to your cart")}
+            onClick={handleAddToCart}
           >
             Add to Cart
           </BaseButton>
