@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../components/Cart/cartContext"; // Import the CartContext
 
-function CheckoutPage({ cart }) {
+function CheckoutPage() {
+  const { cart } = useContext(CartContext); // Access cart data from CartContext
   const totalPrice = cart.reduce((total, product) => {
     return total + product.price;
   }, 0);
