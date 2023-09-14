@@ -5,7 +5,8 @@ import Home from './components/Homepage';
 import Products from './components/ProductPage';
 import RouteNotFound from './components/Layout/RouteNotFound';
 import CheckoutPage from "./components/CheckoutPage";
-import CheckoutSuccessPage from "./components/CheckoutSuccessPage"
+import CheckoutSuccessPage from "./components/CheckoutSuccessPage";
+import ContactPage from './components/ContactPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="products" element={<Products />} />
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="checkout-success" element={<CheckoutSuccessPage />} />
+        <Route path="contact" element={<ContactPage />} />
         <Route path="*" element={<RouteNotFound />} /> {/* Catch-all route */}
       </Route>
     </Routes>

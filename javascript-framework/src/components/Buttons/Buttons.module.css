@@ -1,10 +1,24 @@
 .CartBtn {
-  --bs-btn-padding-x: 5px;
-  --bs-btn-padding-y: 4px;
-  --bs-btn-font-size: 15px;
-  --bs-btn-hover-bg: #0871db;
+  padding: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
   border-color: none;
   background-color: #ffc107;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.CartBtn:hover {
+  color: black;
+  background-color: #ffc107;
+}
+
+.CheckoutBtn {
+  --bs-btn-hover-bg: #ffc107;
+  background-color: #0871db;
 }

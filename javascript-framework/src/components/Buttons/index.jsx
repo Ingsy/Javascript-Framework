@@ -2,10 +2,14 @@ import React from "react";
 import styles from "./Buttons.module.css";
 
 function BaseButton({ className, type, onClick, children }) {
-  const buttonClass = `${styles.BaseButton} ${className}`;
+  const buttonClass = `${styles.BaseButton} ${className}`; // Use styles
 
   return (
-    <button className={`btn ${buttonClass}`} type={type} onClick={onClick}>
+    <button
+      className={`${styles.CartBtn} ${buttonClass}`}
+      type={type}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

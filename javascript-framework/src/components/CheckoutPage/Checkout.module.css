@@ -1,0 +1,18 @@
+.CheckoutLink {
+  color: grey;
+  font-size: larger;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.CheckoutLink:hover {
+  color: black;
+}
+
+.CheckoutBtn {
+  color: black;
+}
+
+.CheckoutBtn:hover {
+  background-color: #039d25;
+}

@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../components/Cart/cartContext"; // Import the CartContext
+import { useNavigate, Link } from "react-router-dom";
+import { CartContext } from "../../components/Cart/cartContext";
+import styles from "./Checkout.module.css";
+import BaseButton from "../Buttons";
 
 function CheckoutPage() {
   const { cart } = useContext(CartContext); // Access cart data from CartContext
@@ -19,7 +21,7 @@ function CheckoutPage() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 text-center">
       <h1>Checkout</h1>
       <ul>
         {cart.map((product) => (
@@ -29,9 +31,15 @@ function CheckoutPage() {
         ))}
       </ul>
       <p>Total: ${totalPrice.toFixed(2)}</p>
-      <button className="btn btn-primary" onClick={handleCheckout}>
+      <BaseButton className={styles.CheckoutBtn} onClick={handleCheckout}>
         Checkout
-      </button>
+      </BaseButton>
+      <p>
+        <Link to="/" className={styles.CheckoutLink}>
+          Continue Shopping
+        </Link>{" "}
+        {/* Add the "Continue Shopping" link */}
+      </p>
     </div>
   );
 }
