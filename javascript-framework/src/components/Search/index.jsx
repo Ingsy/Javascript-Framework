@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "./Search.module.css";
 
 function Search({ products, onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -35,12 +36,12 @@ function Search({ products, onSearch }) {
       <form className="input-group">
         <input
           type="text"
-          className="form-control"
+          className={styles.SearchInput}
           placeholder="Search..."
           value={searchQuery}
           onChange={handleSearchChange}
         />
-        <div className="input-group-append">
+        <div className={styles.SearchBtn}>
           <button
             type="submit"
             className="btn btn-primary"
