@@ -1,0 +1,48 @@
+.formContainer {
+  max-width: 500px; /* Adjust the width as needed */
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Style form labels */
+.formLabel {
+  font-weight: bold;
+}
+
+/* Style form input fields */
+.formInput {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style validation error messages */
+.formError {
+  color: red;
+}
+
+/* Style the submit button */
+.formSubmitButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style the submit button on hover */
+.form-submit-button:hover {
+  background-color: #0056b3;
+}

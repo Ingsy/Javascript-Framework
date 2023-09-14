@@ -62,10 +62,7 @@ const Navbar = ({ products, onSearch }) => {
             </Link>
           </li>
           <li className={`nav-item ${styles.navItem}`}>
-            <Link
-              to="../../ContactPage"
-              className={`nav-link ${styles.navLink} mx-4`}
-            >
+            <Link to="/contact" className={`nav-link ${styles.navLink} mx-4`}>
               Contact
             </Link>
           </li>
