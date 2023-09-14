@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../Cart/cartContext";
+import styles from "./CheckoutSuccess.module.css";
 
 const CheckoutSuccess = () => {
   const { clearCart } = useContext(CartContext);
@@ -10,12 +11,14 @@ const CheckoutSuccess = () => {
   }, [clearCart]);
 
   return (
-    <div className="checkout-success">
-      <h1>Thank you for your order!</h1>
-      <p>Your order has been successfully processed.</p>
-      <li className="nav-item">
-        <Link to="/Homepage">Return to the Store</Link>
-      </li>
+    <div className={styles.checkoutContainer}>
+      <h1 className={styles.checkoutTitle}>Thank you for your order!</h1>
+      <p className={styles.checkoutMessage}>
+        Your order has been successfully processed.
+      </p>
+      <Link to="/Homepage" className="checkout-success-link">
+        Return to the Store
+      </Link>
     </div>
   );
 };
