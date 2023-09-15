@@ -5,40 +5,56 @@ import styles from "./Checkout.module.css";
 import BaseButton from "../Buttons";
 
 function CheckoutPage() {
-  const { cart } = useContext(CartContext); // Access cart data from CartContext
+  const { cart } = useContext(CartContext);
   const totalPrice = cart.reduce((total, product) => {
     return total + product.price;
   }, 0);
 
+  const discountPercentage = 10;
+  const discount = (totalPrice * discountPercentage) / 100;
+
   const navigate = useNavigate();
 
   const handleCheckout = () => {
-    // Perform any necessary actions before checkout
-    // For example, submit the order to the server
-
-    // After successful checkout, navigate to the success page
     navigate("/checkout-success");
   };
 
   return (
-    <div className="container mt-5 text-center">
-      <h1>Checkout</h1>
-      <ul>
+    <div className={styles.CheckoutContainer}>
+      <h1 className={styles.CheckoutHeader}>Checkout</h1>
+      <div className={styles.CheckoutList}>
         {cart.map((product) => (
-          <li key={product.id}>
-            {product.title} - ${product.price.toFixed(2)}
-          </li>
+          <div key={product.id} className={styles.CheckoutItem}>
+            <div className={styles.CheckoutProductInfo}>
+              <img
+                src={product.imageUrl}
+                alt={product.title}
+                className={styles.CheckoutProductImage}
+              />
+              <div className={styles.CheckoutProductDetails}>
+                <h3 className={styles.CheckoutProductName}>{product.title}</h3>
+                <p className={styles.CheckoutProductPrice}>
+                  ${product.price.toFixed(2)}
+                </p>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
-      <p>Total: ${totalPrice.toFixed(2)}</p>
+      </div>
+      <p className={styles.CheckoutTotal}>Subtotal: ${totalPrice.toFixed(2)}</p>
+      <p className={styles.CheckoutDiscount}>
+        Discount ({discountPercentage}%): -${discount.toFixed(2)}
+      </p>
+      <p className={styles.CheckoutTotalAfterDiscount}>
+        Total: ${(totalPrice - discount).toFixed(2)}
+      </p>
       <BaseButton className={styles.CheckoutBtn} onClick={handleCheckout}>
         Checkout
       </BaseButton>
-      <p>
+      <p className={styles.ContinueShopping}>
         <Link to="/" className={styles.CheckoutLink}>
           Continue Shopping
         </Link>{" "}
-        {/* Add the "Continue Shopping" link */}
       </p>
     </div>
   );

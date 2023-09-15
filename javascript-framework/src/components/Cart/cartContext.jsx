@@ -1,9 +1,16 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    // Update cart count whenever the cart changes
+    const count = cart.reduce((acc, item) => acc + item.quantity, 0);
+    setCartCount(count);
+  }, [cart]);
 
   const addToCart = (product) => {
     // Check if the product already exists in the cart
@@ -21,17 +28,27 @@ export const CartProvider = ({ children }) => {
       // If the product doesn't exist, add it to the cart
       setCart([...cart, { ...product, quantity: 1 }]);
     }
+
+    // Increment cart count
+    setCartCount(cartCount + 1);
   };
 
   const removeFromCart = (productId) => {
     // Remove a product from the cart
     const updatedCart = cart.filter((item) => item.id !== productId);
     setCart(updatedCart);
+
+    // Update cart count after removing an item
+    const count = updatedCart.reduce((acc, item) => acc + item.quantity, 0);
+    setCartCount(count);
   };
 
   const clearCart = () => {
     // Clear the cart by setting it to an empty array
     setCart([]);
+
+    // Reset cart count to 0
+    setCartCount(0);
   };
 
   // Calculate the total price of items in the cart
@@ -41,7 +58,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, total }}
+      value={{ cart, cartCount, addToCart, removeFromCart, clearCart, total }}
     >
       {children}
     </CartContext.Provider>
