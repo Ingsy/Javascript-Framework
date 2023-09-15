@@ -16,7 +16,7 @@ const CheckoutSuccess = () => {
       <p className={styles.checkoutMessage}>
         Your order has been successfully processed.
       </p>
-      <Link to="/Homepage" className="checkout-success-link">
+      <Link to="/" className="checkout-success-link">
         Return to the Store
       </Link>
     </div>
