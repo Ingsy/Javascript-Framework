@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import styles from "./ProductList.module.css";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -24,16 +25,19 @@ function ProductList() {
     <div className="row">
       {products.map((product) => (
         <div className="col-lg-4 col-md-6 col-sm-12" key={product.id}>
-          <div className="card mb-4">
+          <div className={styles.card}>
             <img
               src={product.imageUrl}
               alt={product.title}
-              className="card-img-top"
+              className={styles.cardImgTop}
             />
             <div className="card-body">
-              <h5 className="card-title">{product.title}</h5>
-              <p className="card-text">${product.price.toFixed(2)}</p>
-              <Link to={`/product/${product.id}`} className="btn btn-primary">
+              <h5 className={styles.cardTitle}>{product.title}</h5>
+              <p className={styles.cardPrice}>${product.price.toFixed(2)}</p>
+              <Link
+                to={`/product/${product.id}`}
+                className={"btn btn-primary mx-3"}
+              >
                 View Details
               </Link>
             </div>

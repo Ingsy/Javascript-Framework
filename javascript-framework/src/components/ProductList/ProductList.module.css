@@ -1,0 +1,26 @@
+.card {
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid grey;
+  border-radius: 20px;
+  overflow: hidden;
+  padding-bottom: 20px;
+  margin: 30px;
+}
+
+.cardImgTop {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  min-height: 300px;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.cardTitle {
+  margin: 20px;
+}
+
+.cardPrice {
+  margin: 20px;
+}
