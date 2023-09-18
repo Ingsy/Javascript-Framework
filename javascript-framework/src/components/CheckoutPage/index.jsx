@@ -3,11 +3,13 @@ import { useNavigate, Link } from "react-router-dom";
 import { CartContext } from "../../components/Cart/cartContext";
 import styles from "./Checkout.module.css";
 import BaseButton from "../Buttons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function CheckoutPage() {
   const { cart } = useContext(CartContext);
   const totalPrice = cart.reduce((total, product) => {
-    return total + product.price;
+    return total + product.price * product.quantity;
   }, 0);
 
   const discountPercentage = 10;
@@ -17,6 +19,21 @@ function CheckoutPage() {
 
   const handleCheckout = () => {
     navigate("/checkout-success");
+  };
+
+  const { removeFromCart, incrementQuantity, decrementQuantity } =
+    useContext(CartContext);
+
+  const handleRemoveFromCart = (productId) => {
+    removeFromCart(productId);
+  };
+
+  const handleIncrementQuantity = (productId) => {
+    incrementQuantity(productId);
+  };
+
+  const handleDecrementQuantity = (productId) => {
+    decrementQuantity(productId);
   };
 
   return (
@@ -36,6 +53,43 @@ function CheckoutPage() {
                 <p className={styles.CheckoutProductPrice}>
                   ${product.price.toFixed(2)}
                 </p>
+                {product.discountedPrice && (
+                  <p className={styles.CheckoutProductPrice}>
+                    Discount: -$
+                    {((product.price * discountPercentage) / 100).toFixed(2)}
+                  </p>
+                )}
+                {product.discountedPrice && (
+                  <p className={styles.CheckoutDiscountedPrice}>
+                    Price: ${product.discountedPrice.toFixed(2)}
+                  </p>
+                )}
+                <div className={styles.CheckoutActions}>
+                  <button
+                    className={styles.CheckoutActionButton}
+                    onClick={() => handleRemoveFromCart(product.id)}
+                  >
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      className={styles.TrashIcon}
+                    />
+                  </button>
+                  <div className={styles.QuantityControl}>
+                    <button
+                      className={styles.QuantityButton}
+                      onClick={() => handleDecrementQuantity(product.id)}
+                    >
+                      -
+                    </button>
+                    {product.quantity}
+                    <button
+                      className={styles.QuantityButton}
+                      onClick={() => handleIncrementQuantity(product.id)}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
