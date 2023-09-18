@@ -56,9 +56,40 @@ export const CartProvider = ({ children }) => {
     return acc + item.price * item.quantity;
   }, 0);
 
+  const decrementQuantity = (productId) => {
+    const updatedCart = [...cart];
+    const productIndex = updatedCart.findIndex((item) => item.id === productId);
+
+    if (productIndex !== -1) {
+      if (updatedCart[productIndex].quantity > 1) {
+        updatedCart[productIndex].quantity -= 1;
+        setCart(updatedCart);
+      }
+    }
+  };
+
+  const incrementQuantity = (productId) => {
+    const updatedCart = [...cart];
+    const productIndex = updatedCart.findIndex((item) => item.id === productId);
+
+    if (productIndex !== -1) {
+      updatedCart[productIndex].quantity += 1;
+      setCart(updatedCart);
+    }
+  };
+
   return (
     <CartContext.Provider
-      value={{ cart, cartCount, addToCart, removeFromCart, clearCart, total }}
+      value={{
+        cart,
+        cartCount,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        total,
+        decrementQuantity,
+        incrementQuantity,
+      }}
     >
       {children}
     </CartContext.Provider>
