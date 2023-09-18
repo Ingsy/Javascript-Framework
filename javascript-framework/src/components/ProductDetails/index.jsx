@@ -2,25 +2,25 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import BaseButton from "../Buttons";
 import { CartContext } from "../Cart/cartContext";
+import styles from "./Card.module.css";
 
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true); // Add loading state
-  const [error, setError] = useState(null); // Add error state
-  const { addToCart } = useContext(CartContext); // Access addToCart function from CartContext
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
-    // Fetch product data using the product ID from the URL
     fetch(`https://api.noroff.dev/api/v1/online-shop/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setProduct(data);
-        setLoading(false); // Set loading to false when data is received
+        setLoading(false);
       })
       .catch((error) => {
-        setError(error); // Set error state if there's an error
-        setLoading(false); // Set loading to false in case of error
+        setError(error);
+        setLoading(false);
       });
   }, [id]);
 
@@ -37,7 +37,6 @@ function ProductDetails() {
   }
 
   const productPrice = product.price || 0;
-
   const discount = product.discountedPrice
     ? productPrice - product.discountedPrice
     : 0;
@@ -49,50 +48,65 @@ function ProductDetails() {
 
   return (
     <div className="container">
-      <h2 className="mt-3">{product.title}</h2>
-      <div className="card mt-3">
-        <div className="card-body">
-          {product.discountedPrice ? (
-            <div>
-              <img src={product.imageUrl} alt={product.title} />
-              <p className="card-text">
-                <span className="ml-2">
-                  ${product.discountedPrice.toFixed(2)}
+      <h2 className="mt-3 text-center">{product.title}</h2>
+      <div className="d-flex justify-content-center">
+        <div className={styles.card}>
+          <div className="card-body">
+            <div className={styles.discount}>
+              {product.discountedPrice &&
+                productPrice > product.discountedPrice && (
+                  <span className="ml-2">Save ${discount.toFixed(2)}</span>
+                )}
+            </div>
+            <img
+              src={product.imageUrl}
+              alt={product.title}
+              className={styles.cardImgTop}
+            />
+
+            <div className="d-flex justify-content-between mx-4 my-4">
+              <div>
+                <span className={styles.PriceBig}>
+                  {product.discountedPrice
+                    ? `$${product.discountedPrice.toFixed(2)}`
+                    : ""}
                 </span>
-              </p>
-              <p className="card-text text-success">
-                Save ${discount.toFixed(2)}
-              </p>
+              </div>
+              <div>
+                <span className={`ml-2 ${styles.OriginalPrice}`}>
+                  {product.discountedPrice
+                    ? `$${productPrice.toFixed(2)}`
+                    : `Price: $${productPrice.toFixed(2)}`}
+                </span>
+              </div>
             </div>
-          ) : (
-            <p className="card-text">${productPrice.toFixed(2)}</p>
-          )}
-          <p className="card-text">Description: {product.description}</p>
-          <BaseButton
-            className="btn-secondary"
-            type="button"
-            onClick={handleAddToCart}
-          >
-            Add to Cart
-          </BaseButton>
-          {product.reviews && product.reviews.length > 0 ? (
-            <div>
-              <h3>Reviews:</h3>
-              <ul>
-                {product.reviews.map((review) => (
-                  <li key={review.id}>
-                    <strong>{review.username}</strong>
-                    <br />
-                    Rating: {review.rating}
-                    <br />
-                    {review.description}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <p>No reviews yet</p>
-          )}
+            <p className={styles.Description}>{product.description}</p>
+            <BaseButton
+              className="btn-secondary mx-4"
+              type="button"
+              onClick={handleAddToCart}
+            >
+              Add to Cart
+            </BaseButton>
+            {product.reviews && product.reviews.length > 0 ? (
+              <div className={styles.ReviewsSection}>
+                <h3 className="mx-4">Reviews:</h3>
+                <ul className={`${styles.ReviewsList}`}>
+                  {product.reviews.map((review) => (
+                    <li key={review.id} className={styles.ReviewsListItem}>
+                      <strong>{review.username}</strong>
+                      <br />
+                      Rating: {review.rating}
+                      <br />
+                      {review.description}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <p className="m-4">No reviews yet</p>
+            )}
+          </div>
         </div>
       </div>
     </div>
