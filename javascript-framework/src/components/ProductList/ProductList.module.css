@@ -24,3 +24,19 @@
 .cardPrice {
   margin: 20px;
 }
+
+.ViewDetails {
+  background-color: #fc4dc8;
+  border-color: none;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.ViewDetails:hover {
+  background-color: #f7a5d7;
+  border-color: none;
+  color: black;
+}
