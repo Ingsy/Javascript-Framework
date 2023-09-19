@@ -4,14 +4,9 @@ import styles from "./ProductList.module.css";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
-  const [page, setPage] = useState(1);
-  const productsPerPage = 20;
 
   useEffect(() => {
-    // Fetch products only when the page changes
-    fetch(
-      `https://api.noroff.dev/api/v1/online-shop?page=${page}&items=${productsPerPage}`
-    )
+    fetch("https://api.noroff.dev/api/v1/online-shop")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
@@ -19,7 +14,7 @@ function ProductList() {
       .catch((error) => {
         console.error("Error fetching products:", error);
       });
-  }, [page]);
+  }, []);
 
   return (
     <div className="row">
@@ -44,13 +39,6 @@ function ProductList() {
           </div>
         </div>
       ))}
-      <div className="pagination">
-        <button onClick={() => setPage(page - 1)} disabled={page === 1}>
-          Previous
-        </button>
-        <span>Page {page}</span>
-        <button onClick={() => setPage(page + 1)}>Next</button>
-      </div>
     </div>
   );
 }
