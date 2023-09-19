@@ -8,7 +8,7 @@
   border: none;
   color: #000000;
   border-color: none;
-  background-color: #fd0db6;
+  background-color: #f87bd3;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -19,7 +19,7 @@
 }
 
 .ViewDetails {
-  background-color: #fd0db6;
+  background-color: #f87bd3;
   border-color: none;
   font-size: bold;
   color: #fff;
