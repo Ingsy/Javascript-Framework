@@ -34,7 +34,7 @@ function ProductList() {
               <p className={styles.cardPrice}>${product.price.toFixed(2)}</p>
               <Link
                 to={`/product/${product.id}`}
-                className={`mx-3 ${styles.ViewDetails}`}
+                className={styles.ViewDetails}
               >
                 View Details
               </Link>

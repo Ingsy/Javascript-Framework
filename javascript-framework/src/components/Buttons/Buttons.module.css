@@ -5,27 +5,13 @@
   font-size: 15px;
   font-weight: bold;
   border-radius: 10px;
-  border: none;
   color: #000000;
-  border-color: none;
   background-color: #f87bd3;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    box-shadow 0.15s ease-in-out;
 }
 
 .CartBtn:hover {
   color: black;
   background-color: #f87bd3;
-}
-
-.ViewDetails {
-  background-color: #f87bd3;
-  border-color: none;
-  font-size: bold;
-  color: #fff;
-}
-
-.ViewDetails:hover {
-  background-color: #f87bd3;
-  border-color: none;
 }

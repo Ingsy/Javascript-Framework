@@ -26,8 +26,7 @@
 }
 
 .ViewDetails {
-  background-color: #fc4dc8;
-  border-color: none;
+  background-color: #f7a5d7;
   font-weight: bold;
   color: #ffffff;
   text-decoration: none;
@@ -36,7 +35,6 @@
 }
 
 .ViewDetails:hover {
-  background-color: #f7a5d7;
-  border-color: none;
+  background-color: #fc4dc8;
   color: black;
 }
