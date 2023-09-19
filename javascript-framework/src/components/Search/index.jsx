@@ -41,10 +41,10 @@ function Search({ products, onSearch }) {
           value={searchQuery}
           onChange={handleSearchChange}
         />
-        <div className={styles.SearchBtn}>
+        <div>
           <button
             type="submit"
-            className="btn btn-primary"
+            className={styles.SearchBtn}
             onClick={(e) => {
               e.preventDefault();
               onSearch(searchQuery);

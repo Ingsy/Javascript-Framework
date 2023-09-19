@@ -1,17 +1,22 @@
-.SearchBtn {
-  color: black;
-  background-color: #a5a9ae;
-  border-radius: 10px;
-}
-
-.SearchBtn:hover {
-  color: black;
-  background-color: #ffc107;
-  border-color: #ffc107;
-}
-
 .SearchInput {
   min-width: 250px;
   border-radius: 10px;
+  padding-left: 15px;
   border: none;
+}
+
+.SearchBtn {
+  background-color: #f87bd3;
+  color: #fff;
+  border-radius: 0 10px 10px 0;
+  text-decoration: none;
+  border: none;
+  font-size: 14px;
+  padding: 6px 8px;
+  font-weight: bold;
+}
+
+.SearchBtn:hover {
+  color: #fff;
+  background-color: #fd00c2;
 }

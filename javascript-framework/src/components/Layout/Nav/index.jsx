@@ -19,7 +19,7 @@ const Navbar = ({ products, onSearch }) => {
 
   return (
     <nav className={`navbar navbar-expand-lg ${styles.navbar}`}>
-      <Link to="/" className={`navbar-brand ${styles.brand}`}>
+      <Link to="/" className={styles.brand}>
         Online Shop
       </Link>
 
@@ -49,20 +49,20 @@ const Navbar = ({ products, onSearch }) => {
       >
         <ul className={`navbar-nav ${styles.navList}`}>
           <li className={`nav-item ${styles.navItem}`}>
-            <Link to="/Homepage" className={`nav-link ${styles.navLink} mx-4`}>
+            <Link to="/Homepage" className={`nav-link ${styles.navLink} mx-2`}>
               Home
             </Link>
           </li>
           <li className={`nav-item ${styles.navItem}`}>
             <Link
               to="/ProductPage"
-              className={`nav-link ${styles.navLink} mx-4`}
+              className={`nav-link ${styles.navLink} mx-2`}
             >
               Products
             </Link>
           </li>
           <li className={`nav-item ${styles.navItem}`}>
-            <Link to="/contact" className={`nav-link ${styles.navLink} mx-4`}>
+            <Link to="/contact" className={`nav-link ${styles.navLink} mx-2`}>
               Contact
             </Link>
           </li>
