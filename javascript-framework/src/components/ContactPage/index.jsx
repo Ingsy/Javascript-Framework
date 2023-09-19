@@ -41,7 +41,6 @@ function ContactForm() {
     const isValid = validateForm();
 
     if (isValid) {
-      // Submit the form data or perform any other actions here
       console.log("Form data:", formData);
     }
   };
