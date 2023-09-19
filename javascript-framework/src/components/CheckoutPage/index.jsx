@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { CartContext } from "../../components/Cart/cartContext";
-import styles from "./Checkout.module.css";
 import BaseButton from "../Buttons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import styles from "./Checkout.module.css";
 
 function CheckoutPage() {
   const { cart } = useContext(CartContext);
@@ -95,16 +95,14 @@ function CheckoutPage() {
           </div>
         ))}
       </div>
-      <p className={styles.CheckoutTotal}>Subtotal: ${totalPrice.toFixed(2)}</p>
+      <p className={styles.SubTotal}>Subtotal: ${totalPrice.toFixed(2)}</p>
       <p className={styles.CheckoutDiscount}>
         Discount ({discountPercentage}%): -${discount.toFixed(2)}
       </p>
-      <p className={styles.CheckoutTotalAfterDiscount}>
+      <p className={styles.CheckoutTotal}>
         Total: ${(totalPrice - discount).toFixed(2)}
       </p>
-      <BaseButton className={styles.CheckoutBtn} onClick={handleCheckout}>
-        Checkout
-      </BaseButton>
+      <BaseButton onClick={handleCheckout}>Checkout</BaseButton>
       <p className={styles.ContinueShopping}>
         <Link to="/" className={styles.CheckoutLink}>
           Continue Shopping

@@ -51,11 +51,36 @@
   color: rgb(93, 93, 93);
 }
 
+.Reviews {
+  margin-left: 30px;
+  margin-bottom: 0;
+  text-decoration: underline;
+}
+
 .ReviewsList {
   list-style: none;
 }
 
+.ReviewsRating {
+  color: #ffffff;
+  margin-left: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #fc4dc8;
+  padding: 3px;
+  border-radius: 5px;
+}
+
 .ReviewsListItem {
-  margin-top: 20px;
-  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.AddToCart {
+  margin-left: 30px;
+}
+
+hr {
+  border: none;
+  margin-right: 30px;
+  border-top: 2px solid #fc4dc8;
 }
