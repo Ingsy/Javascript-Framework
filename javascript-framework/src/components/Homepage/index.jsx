@@ -12,8 +12,8 @@ function Home() {
   }, []);
 
   return (
-    <div className="container mt-5">
-      <h1>Welcome to Our Online Store</h1>
+    <div className="container mt-3">
+      <h1 className="text-center">Welcome to Our Online Store</h1>
       <div className="row">
         <div className="col">
           <ProductList products={products} />

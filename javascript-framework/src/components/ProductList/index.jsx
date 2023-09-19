@@ -17,9 +17,12 @@ function ProductList() {
   }, []);
 
   return (
-    <div className="row">
+    <div className="row mx-auto">
       {products.map((product) => (
-        <div className="col-lg-4 col-md-6 col-sm-12" key={product.id}>
+        <div
+          className="d-flex justify-content-center col-lg-4 col-md-6 col-sm-12"
+          key={product.id}
+        >
           <div className={styles.card}>
             <img
               src={product.imageUrl}

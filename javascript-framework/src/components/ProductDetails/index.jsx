@@ -90,7 +90,11 @@ function ProductDetails() {
             </BaseButton>
             {product.reviews && product.reviews.length > 0 ? (
               <div className={styles.ReviewsSection}>
-                <h3 className={styles.Reviews}>Reviews:</h3>
+                <h3 className={styles.Reviews}>
+                  Reviews:
+                  <hr className={styles.mr} />
+                </h3>
+
                 <ul className={`${styles.ReviewsList}`}>
                   {product.reviews.map((review) => (
                     <li key={review.id} className={styles.ReviewsListItem}>
@@ -104,11 +108,11 @@ function ProductDetails() {
                       {review.description}
                     </li>
                   ))}
-                  <hr></hr>
+                  <hr />
                 </ul>
               </div>
             ) : (
-              <p className="m-4">No reviews yet</p>
+              <p className={styles.NoReviews}>No reviews yet</p>
             )}
           </div>
         </div>
