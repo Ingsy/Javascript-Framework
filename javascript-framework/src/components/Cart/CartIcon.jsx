@@ -1,22 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Cart.module.css"; // Import the CSS module
+import styles from "./Cart.module.css";
+import { CartContext } from "./cartContext";
 
 function CartIcon() {
-  const [cartCount, setCartCount] = useState(0);
-
-  // Function to increment the cart count
-  const addToCart = () => {
-    setCartCount(cartCount + 1);
-  };
+  const { cartCount } = useContext(CartContext);
 
   return (
     <div className={styles["cart-container"]}>
       <Link to="/checkout" className={styles["cart-link"]}>
         <div className={styles["icon-count-container"]}>
-          <button className={styles["icon-button"]} onClick={addToCart}>
+          <button className={styles["icon-button"]}>
             <FontAwesomeIcon icon={faShoppingCart} />
           </button>
           {cartCount > 0 && (
