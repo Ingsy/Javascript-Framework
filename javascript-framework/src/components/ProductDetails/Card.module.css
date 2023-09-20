@@ -95,3 +95,13 @@ hr {
   font-size: 14px;
   color: rgb(93, 93, 93);
 }
+
+.checkoutLink {
+  font-size: 18px;
+  text-decoration: none;
+  color: #ff00dd;
+}
+
+.checkoutLink:hover {
+  text-decoration: underline;
+}

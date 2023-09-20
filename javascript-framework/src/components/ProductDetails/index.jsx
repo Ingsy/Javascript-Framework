@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import BaseButton from "../Buttons";
 import { CartContext } from "../Cart/cartContext";
 import styles from "./Card.module.css";
@@ -117,6 +117,11 @@ function ProductDetails() {
           </div>
         </div>
       </div>
+      <p className="text-center">
+        <Link to="/" className={styles.checkoutLink}>
+          Continue Shopping
+        </Link>{" "}
+      </p>
     </div>
   );
 }
