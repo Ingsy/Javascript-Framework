@@ -5,6 +5,8 @@ function Search({ products, onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
+  console.log("Products prop:", products);
+
   const handleSearchChange = (e) => {
     const query = e.target.value;
     setSearchQuery(query);

@@ -21,10 +21,13 @@ function Products() {
   const handleSearchChange = (query) => {
     setSearchQuery(query);
 
-    const filtered = products.filter((product) =>
-      product.title.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredProducts(filtered);
+    // Check if products is defined before filtering
+    if (products && products.length > 0) {
+      const filtered = products.filter((product) =>
+        product.title.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    }
   };
 
   return (
