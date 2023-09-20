@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ProductList from "../ProductList";
 import Search from "../Search";
 
@@ -18,22 +18,38 @@ function Products() {
       });
   }, []);
 
-  const handleSearchChange = (query) => {
-    setSearchQuery(query);
+  console.log("Products state:", products);
 
-    // Check if products is defined before filtering
-    if (products && products.length > 0) {
-      const filtered = products.filter((product) =>
-        product.title.toLowerCase().includes(query.toLowerCase())
-      );
-      setFilteredProducts(filtered);
-    }
-  };
+  const handleSearchChange = useCallback(
+    (query) => {
+      setSearchQuery(query);
+      if (products && products.length > 0) {
+        const filtered = products.filter((product) =>
+          product.title.toLowerCase().includes(query.toLowerCase())
+        );
+        setFilteredProducts(filtered);
+      }
+    },
+    [products]
+  );
+
+  useEffect(() => {
+    console.log("onSearch prop in Products:", typeof handleSearchChange);
+  }, [handleSearchChange]);
+
+  if (typeof handleSearchChange !== "function") {
+    console.error("onSearch is not a function:", handleSearchChange);
+    return null;
+  }
 
   return (
     <div>
       <h1>Products</h1>
-      <Search onSearch={handleSearchChange} />
+      {products.length > 0 ? (
+        <Search products={products} onSearch={handleSearchChange} />
+      ) : (
+        <p>Loading products...</p>
+      )}
       <ProductList products={searchQuery ? filteredProducts : products} />
     </div>
   );

@@ -1,10 +1,11 @@
+import React from "react";
 import Navbar from "../Nav";
 import CartIcon from "../../Cart/CartIcon";
 
-function Header() {
+function Header({ onSearch }) {
   return (
     <header>
-      <Navbar />
+      <Navbar onSearch={onSearch} />
       <div className="cart-container">
         <CartIcon />
       </div>

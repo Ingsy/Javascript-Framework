@@ -3,10 +3,10 @@ import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import styles from "./Layout.module.css";
 
-function Layout() {
+function Layout({ onSearch }) {
   return (
     <div className={styles.layout}>
-      <Header />
+      <Header onSearch={onSearch} />
       <main className={styles.main}>
         <Outlet />
       </main>

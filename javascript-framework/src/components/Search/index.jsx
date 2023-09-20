@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import styles from "./Search.module.css";
 
 function Search({ products, onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+
+  console.log("Received onSearch prop:", onSearch);
 
   console.log("Products prop:", products);
 
@@ -11,7 +14,6 @@ function Search({ products, onSearch }) {
     const query = e.target.value;
     setSearchQuery(query);
 
-    // Filter products based on the query and set suggestions
     const filteredSuggestions = products.filter((product) => {
       const lowerCaseQuery = query.toLowerCase();
       return (
@@ -28,6 +30,7 @@ function Search({ products, onSearch }) {
   };
 
   const handleSuggestionClick = (product) => {
+    console.log("onSearch:", typeof onSearch);
     setSearchQuery("");
     setSuggestions([]);
     onSearch(product);
@@ -73,5 +76,10 @@ function Search({ products, onSearch }) {
     </div>
   );
 }
+
+Search.propTypes = {
+  products: PropTypes.array.isRequired,
+  onSearch: PropTypes.func.isRequired,
+};
 
 export default Search;

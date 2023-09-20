@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Nav.module.css";
 import Search from "../../Search";
 
-const Navbar = ({ products, onSearch }) => {
+const Navbar = ({ onSearch }) => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.noroff.dev/api/v1/online-shop")
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+  }, []);
 
   const toggleSearch = () => {
     setIsSearchVisible(!isSearchVisible);
@@ -48,24 +60,38 @@ const Navbar = ({ products, onSearch }) => {
         id="navbarNav"
       >
         <ul className={`navbar-nav ${styles.navList}`}>
-          <li className={`nav-item ${styles.navItem}`}>
-            <Link to="/Homepage" className={`nav-link ${styles.navLink} mx-2`}>
-              Home
-            </Link>
-          </li>
-          <li className={`nav-item ${styles.navItem}`}>
-            <Link
-              to="/ProductPage"
-              className={`nav-link ${styles.navLink} mx-2`}
-            >
-              Products
-            </Link>
-          </li>
-          <li className={`nav-item ${styles.navItem}`}>
-            <Link to="/contact" className={`nav-link ${styles.navLink} mx-2`}>
-              Contact
-            </Link>
-          </li>
+          <div
+            className={`collapse navbar-collapse ${
+              isNavCollapsed ? "" : "show"
+            }`}
+          >
+            <ul className={`navbar-nav ${styles.navList}`}>
+              <li className={`nav-item ${styles.navItem}`}>
+                <Link
+                  to="/Homepage"
+                  className={`nav-link ${styles.navLink} mx-2`}
+                >
+                  Home
+                </Link>
+              </li>
+              <li className={`nav-item ${styles.navItem}`}>
+                <Link
+                  to="/ProductPage"
+                  className={`nav-link ${styles.navLink} mx-2`}
+                >
+                  Products
+                </Link>
+              </li>
+              <li className={`nav-item ${styles.navItem}`}>
+                <Link
+                  to="/contact"
+                  className={`nav-link ${styles.navLink} mx-2`}
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
         </ul>
       </div>
       <div className={`d-lg-none ${isSearchVisible ? "mb-3" : "d-none"}`}>

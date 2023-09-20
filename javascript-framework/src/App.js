@@ -10,6 +10,7 @@ import ProductDetails from './components/ProductDetails';
 import ProductPage from "./components/ProductPage";
 
 function App() {
+
   return (
     <Routes>
       {/* Define a root route for the homepage */}
