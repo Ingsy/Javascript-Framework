@@ -1,17 +1,17 @@
 .navbar {
-  background-color: #aeb836;
+  background-color: #c5c5c5;
   min-height: 100px;
 }
 
 .brand {
-  color: #ffffff;
+  color: #f005ae;
   margin-left: 20px;
   text-decoration: none;
   font-size: 30px;
 }
 
 .brand:hover {
-  color: #f005ae;
+  color: #000000;
 }
 
 .togglerIcon {
@@ -19,7 +19,7 @@
 }
 
 .navbarToggler {
-  margin-right: 5%;
+  margin-right: 19px;
   font-size: 40px;
   background-color: transparent;
   border: none;
@@ -32,11 +32,12 @@
 }
 
 .navList {
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 .navItem {
   margin-right: 15px;
+  margin-bottom: 10px;
 }
 
 .navLink {

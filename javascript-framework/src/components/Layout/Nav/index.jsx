@@ -59,7 +59,7 @@ const Navbar = ({ onSearch }) => {
         className={`collapse navbar-collapse ${isNavCollapsed ? "" : "show"}`}
         id="navbarNav"
       >
-        <ul className={`navbar-nav ${styles.navList}`}>
+        <ul className={`navbar-nav mb-0 ${styles.navList}`}>
           <div
             className={`collapse navbar-collapse ${
               isNavCollapsed ? "" : "show"
@@ -67,26 +67,17 @@ const Navbar = ({ onSearch }) => {
           >
             <ul className={`navbar-nav ${styles.navList}`}>
               <li className={`nav-item ${styles.navItem}`}>
-                <Link
-                  to="/Homepage"
-                  className={`nav-link ${styles.navLink} mx-2`}
-                >
+                <Link to="/Homepage" className={`${styles.navLink} mx-2`}>
                   Home
                 </Link>
               </li>
               <li className={`nav-item ${styles.navItem}`}>
-                <Link
-                  to="/ProductPage"
-                  className={`nav-link ${styles.navLink} mx-2`}
-                >
+                <Link to="/ProductPage" className={`${styles.navLink} mx-2`}>
                   Products
                 </Link>
               </li>
               <li className={`nav-item ${styles.navItem}`}>
-                <Link
-                  to="/contact"
-                  className={`nav-link ${styles.navLink} mx-2`}
-                >
+                <Link to="/contact" className={`${styles.navLink} mx-2`}>
                   Contact
                 </Link>
               </li>
