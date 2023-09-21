@@ -65,15 +65,6 @@ function CheckoutPage() {
                   </p>
                 )}
                 <div className={styles.CheckoutActions}>
-                  <button
-                    className={styles.CheckoutActionButton}
-                    onClick={() => handleRemoveFromCart(product.id)}
-                  >
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      className={styles.TrashIcon}
-                    />
-                  </button>
                   <div className={styles.QuantityControl}>
                     <button
                       className={styles.QuantityButton}
@@ -89,6 +80,15 @@ function CheckoutPage() {
                       +
                     </button>
                   </div>
+                  <button
+                    className={styles.CheckoutActionButton}
+                    onClick={() => handleRemoveFromCart(product.id)}
+                  >
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      className={styles.TrashIcon}
+                    />
+                  </button>
                 </div>
               </div>
             </div>

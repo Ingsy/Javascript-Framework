@@ -28,7 +28,7 @@
 .ViewDetails {
   background-color: #f7a5d7;
   font-weight: bold;
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
   padding: 8px;
   border-radius: 10px;
@@ -37,5 +37,4 @@
 
 .ViewDetails:hover {
   background-color: #fc4dc8;
-  color: black;
 }
