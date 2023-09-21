@@ -20,7 +20,11 @@
 
 .navbarToggler {
   margin-right: 5%;
-  font-size: 25px;
+  font-size: 40px;
+  background-color: transparent;
+  border: none;
+  font-weight: 100;
+  color: #000000;
 }
 
 .navCollapse {
