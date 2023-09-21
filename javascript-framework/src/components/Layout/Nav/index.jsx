@@ -36,7 +36,7 @@ const Navbar = ({ onSearch }) => {
       </Link>
 
       <button
-        className={styles.navbarToggler}
+        className={`navbar-toggler ${styles.navbarToggler}`}
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarNav"
