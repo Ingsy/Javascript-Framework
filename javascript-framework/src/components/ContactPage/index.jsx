@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import styles from "./Contact.module.css";
+import BaseButton from "../Buttons";
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -122,13 +122,13 @@ function ContactForm() {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Button
+        <BaseButton
           variant="primary"
           type="submit"
           className={styles.formSubmitButton}
         >
           Submit
-        </Button>
+        </BaseButton>
       </Form>
     </div>
   );
