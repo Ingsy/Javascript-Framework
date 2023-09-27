@@ -72,7 +72,7 @@ This project is deployed on [Netlify](https://glowing-quokka-a315eb.netlify.app/
 
 ## GitHub Repository
 
-The public GitHub repository for this project can be found [here](#).
+The public GitHub repository for this project can be found [here](https://github.com/Ingsy/Javascript-Framework/tree/main/javascript-framework).
 
 ## Acknowledgments
 
