@@ -3,6 +3,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100px;
-  font-size: larger;
+  min-height: 80px;
 }

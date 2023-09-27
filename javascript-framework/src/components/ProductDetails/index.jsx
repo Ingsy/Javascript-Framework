@@ -3,13 +3,20 @@ import { useParams, Link } from "react-router-dom";
 import BaseButton from "../Buttons";
 import { CartContext } from "../Cart/cartContext";
 import styles from "./Card.module.css";
+import { Collapse, Button } from "react-bootstrap";
 
 function ProductDetails() {
   const { id } = useParams();
+  const { addToCart } = useContext(CartContext);
+
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { addToCart } = useContext(CartContext);
+  const [showReviews, setShowReviews] = useState(false);
+
+  const toggleReviews = () => {
+    setShowReviews(!showReviews);
+  };
 
   useEffect(() => {
     fetch(`https://api.noroff.dev/api/v1/online-shop/${id}`)
@@ -90,26 +97,31 @@ function ProductDetails() {
             </BaseButton>
             {product.reviews && product.reviews.length > 0 ? (
               <div className={styles.ReviewsSection}>
-                <h3 className={styles.Reviews}>
-                  Reviews:
-                  <hr className={styles.mr} />
-                </h3>
+                <Button
+                  variant="link"
+                  onClick={toggleReviews}
+                  className={styles.ToggleReviewsBtn}
+                >
+                  {showReviews ? "Reviews" : "Show Reviews"}
+                </Button>
 
-                <ul className={`${styles.ReviewsList}`}>
-                  {product.reviews.map((review) => (
-                    <li key={review.id} className={styles.ReviewsListItem}>
-                      <strong>{review.username}</strong>
-                      <br />
-                      Rating:
-                      <span className={styles.ReviewsRating}>
-                        {review.rating}
-                      </span>
-                      <br />
-                      {review.description}
-                    </li>
-                  ))}
-                  <hr />
-                </ul>
+                <Collapse in={showReviews}>
+                  <ul className={`${styles.ReviewsList}`}>
+                    {product.reviews.map((review) => (
+                      <li key={review.id} className={styles.ReviewsListItem}>
+                        <strong>{review.username}</strong>
+                        <br />
+                        Rating:
+                        <span className={styles.ReviewsRating}>
+                          {review.rating}
+                        </span>
+                        <br />
+                        {review.description}
+                      </li>
+                    ))}
+                    <hr />
+                  </ul>
+                </Collapse>
               </div>
             ) : (
               <p className={styles.NoReviews}>No reviews yet</p>
