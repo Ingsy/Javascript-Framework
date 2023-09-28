@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./Search.module.css";
 import { useNavigate } from "react-router-dom";
@@ -30,9 +30,15 @@ function Search({ products, onSearch }) {
   };
 
   const handleSuggestionClick = (product) => {
-    const productDetailUrl = `/products/${product.id}`;
+    const productDetailUrl = `/product/${product.id}`;
     navigate(productDetailUrl);
   };
+
+  useEffect(() => {
+    return () => {
+      setSearchQuery("");
+    };
+  }, []);
 
   return (
     <div className="container mt-3">
