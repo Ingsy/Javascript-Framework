@@ -125,7 +125,7 @@
 
 .QuantityButton:hover {
   background-color: #f87bd3;
-  color: black; /* Set text color to black on hover */
+  color: black;
 }
 
 .QuantityValue {
