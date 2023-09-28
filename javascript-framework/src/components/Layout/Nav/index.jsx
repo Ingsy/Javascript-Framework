@@ -67,7 +67,7 @@ const Navbar = ({ onSearch }) => {
           >
             <ul className={`navbar-nav ${styles.navList}`}>
               <li className={`nav-item ${styles.navItem}`}>
-                <Link to="/Homepage" className={`${styles.navLink} mx-2`}>
+                <Link to="/" className={`${styles.navLink} mx-2`}>
                   Home
                 </Link>
               </li>
