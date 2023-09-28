@@ -8,18 +8,7 @@ import styles from "./Checkout.module.css";
 
 function CheckoutPage() {
   const { cart } = useContext(CartContext);
-  const totalPrice = cart.reduce((total, product) => {
-    return total + product.price * product.quantity;
-  }, 0);
-
-  const discountPercentage = 10;
-  const discount = (totalPrice * discountPercentage) / 100;
-
   const navigate = useNavigate();
-
-  const handleCheckout = () => {
-    navigate("/checkout-success");
-  };
 
   const { removeFromCart, incrementQuantity, decrementQuantity } =
     useContext(CartContext);
@@ -34,6 +23,22 @@ function CheckoutPage() {
 
   const handleDecrementQuantity = (productId) => {
     decrementQuantity(productId);
+  };
+
+  // Calculate the total price and discount based on product discounts
+  let totalPrice = 0;
+  let totalDiscount = 0;
+
+  cart.forEach((product) => {
+    const productPrice = product.discountedPrice || product.price;
+    const productDiscount = product.price - productPrice;
+
+    totalPrice += productPrice * product.quantity;
+    totalDiscount += productDiscount * product.quantity;
+  });
+
+  const handleCheckout = () => {
+    navigate("/checkout-success");
   };
 
   return (
@@ -53,10 +58,14 @@ function CheckoutPage() {
                 <p className={styles.CheckoutProductPrice}>
                   ${product.price.toFixed(2)}
                 </p>
+
                 {product.discountedPrice && (
-                  <p className={styles.CheckoutProductPrice}>
+                  <p className={styles.CheckoutDiscount}>
                     Discount: -$
-                    {((product.price * discountPercentage) / 100).toFixed(2)}
+                    {(
+                      (product.price - product.discountedPrice) *
+                      product.quantity
+                    ).toFixed(2)}
                   </p>
                 )}
                 {product.discountedPrice && (
@@ -97,10 +106,10 @@ function CheckoutPage() {
       </div>
       <p className={styles.SubTotal}>Subtotal: ${totalPrice.toFixed(2)}</p>
       <p className={styles.CheckoutDiscount}>
-        Discount ({discountPercentage}%): -${discount.toFixed(2)}
+        Discount: -${totalDiscount.toFixed(2)}
       </p>
       <p className={styles.CheckoutTotal}>
-        Total: ${(totalPrice - discount).toFixed(2)}
+        Total: ${(totalPrice - totalDiscount).toFixed(2)}
       </p>
       <BaseButton onClick={handleCheckout}>Checkout</BaseButton>
       <p className={styles.ContinueShopping}>

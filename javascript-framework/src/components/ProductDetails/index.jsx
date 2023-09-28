@@ -44,9 +44,8 @@ function ProductDetails() {
   }
 
   const productPrice = product.price || 0;
-  const discount = product.discountedPrice
-    ? productPrice - product.discountedPrice
-    : 0;
+  const discountedPrice = product.discountedPrice || 0;
+  const discount = productPrice - discountedPrice;
 
   const handleAddToCart = () => {
     addToCart(product);
@@ -59,12 +58,11 @@ function ProductDetails() {
       <div className="d-flex justify-content-center">
         <div className={styles.card}>
           <div className="card-body">
-            <div className={styles.discount}>
-              {product.discountedPrice &&
-                productPrice > product.discountedPrice && (
-                  <span className="ml-2">Save ${discount.toFixed(2)}</span>
-                )}
-            </div>
+            {discountedPrice < productPrice && (
+              <div className={styles.discount}>
+                <span className="ml-2">Save ${discount.toFixed(2)}</span>
+              </div>
+            )}
             <img
               src={product.imageUrl}
               alt={product.title}
@@ -74,18 +72,16 @@ function ProductDetails() {
             <div className="d-flex justify-content-between mx-4 my-4">
               <div>
                 <span className={styles.PriceBig}>
-                  {product.discountedPrice
-                    ? `$${product.discountedPrice.toFixed(2)}`
-                    : ""}
+                  {discountedPrice ? `$${discountedPrice.toFixed(2)}` : ""}
                 </span>
               </div>
-              <div>
-                <span className={`ml-2 ${styles.OriginalPrice}`}>
-                  {product.discountedPrice
-                    ? `$${productPrice.toFixed(2)}`
-                    : `Price: $${productPrice.toFixed(2)}`}
-                </span>
-              </div>
+              {discountedPrice < productPrice && (
+                <div>
+                  <span className={`ml-2 ${styles.OriginalPrice}`}>
+                    Price: ${productPrice.toFixed(2)}
+                  </span>
+                </div>
+              )}
             </div>
             <p className={styles.Description}>{product.description}</p>
             <BaseButton
