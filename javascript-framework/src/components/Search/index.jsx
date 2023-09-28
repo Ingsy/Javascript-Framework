@@ -8,8 +8,6 @@ function Search({ products, onSearch }) {
   const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
 
-  console.log("Received onSearch prop:", onSearch);
-
   const handleSearchChange = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
