@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./Search.module.css";
+import { useNavigate } from "react-router-dom";
 
 function Search({ products, onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const navigate = useNavigate();
 
   console.log("Received onSearch prop:", onSearch);
-
-  console.log("Products prop:", products);
 
   const handleSearchChange = (e) => {
     const query = e.target.value;
@@ -30,10 +30,8 @@ function Search({ products, onSearch }) {
   };
 
   const handleSuggestionClick = (product) => {
-    console.log("onSearch:", typeof onSearch);
-    setSearchQuery("");
-    setSuggestions([]);
-    onSearch(product);
+    const productDetailUrl = `/products/${product.id}`;
+    navigate(productDetailUrl);
   };
 
   return (

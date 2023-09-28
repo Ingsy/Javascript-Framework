@@ -11,10 +11,13 @@ import ProductPage from "./components/ProductPage";
 
 function App() {
 
+  const onSearch = () => {
+  }
+
   return (
     <Routes>
       {/* Define a root route for the homepage */}
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Layout onSearch={onSearch} />}>
         <Route index element={<Home />} />
         <Route path="products" element={<ProductPage />} />
         <Route path="checkout" element={<CheckoutPage />} />
