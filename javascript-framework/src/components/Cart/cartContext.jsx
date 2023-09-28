@@ -1,15 +1,23 @@
 import React, { createContext, useState, useEffect } from "react";
+import {
+  loadFromLocalStorage,
+  saveToLocalStorage,
+} from "../../utilities/localStorage";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  // Load cart data from LocalStorage on component initialization
+  const [cart, setCart] = useState(loadFromLocalStorage("cart", []));
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
     // Update cart count whenever the cart changes
     const count = cart.reduce((acc, item) => acc + item.quantity, 0);
     setCartCount(count);
+
+    // Save cart data to LocalStorage whenever it changes
+    saveToLocalStorage("cart", cart);
   }, [cart]);
 
   const addToCart = (product) => {
