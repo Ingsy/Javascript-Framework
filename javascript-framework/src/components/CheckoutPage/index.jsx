@@ -5,7 +5,7 @@ import BaseButton from "../Buttons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Checkout.module.css";
-import AlertCheckout from "../Alert/AlertCheckout"; // Import the AlertCheckout component
+import AlertCheckout from "../Alert/AlertCheckout";
 
 function CheckoutPage() {
   const { cart } = useContext(CartContext);
@@ -26,7 +26,6 @@ function CheckoutPage() {
     decrementQuantity(productId);
   };
 
-  // Calculate the total price and discount based on product discounts
   let totalPrice = 0;
   let totalDiscount = 0;
 
@@ -38,8 +37,8 @@ function CheckoutPage() {
     totalDiscount += productDiscount * product.quantity;
   });
 
-  const [showAlert, setShowAlert] = useState(false); // State to control the alert visibility
-  const [checkoutInitiated, setCheckoutInitiated] = useState(false); // State to track if checkout has been initiated
+  const [showAlert, setShowAlert] = useState(false);
+  const [checkoutInitiated, setCheckoutInitiated] = useState(false);
 
   const handleCheckout = () => {
     setCheckoutInitiated(true);
@@ -51,12 +50,12 @@ function CheckoutPage() {
       navigate("/checkout-success");
     }
     setShowAlert(false);
-    setCheckoutInitiated(false); // Reset the checkout initiation status
+    setCheckoutInitiated(false);
   };
 
   const handleAlertClose = () => {
     setShowAlert(false);
-    setCheckoutInitiated(false); // Reset the checkout initiation status
+    setCheckoutInitiated(false);
   };
 
   return (
