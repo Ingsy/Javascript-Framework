@@ -100,7 +100,6 @@ function ProductDetails() {
                 >
                   {showReviews ? "Reviews" : "Show Reviews"}
                 </Button>
-
                 <Collapse in={showReviews}>
                   <ul className={`${styles.ReviewsList}`}>
                     {product.reviews.map((review) => (
