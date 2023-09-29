@@ -1,6 +1,6 @@
 .customAlert {
   background-color: #fcfcfc;
-  border: 2px solid rgb(255, 0, 221); /* Add border with 2px width */
+  border: 2px solid rgb(255, 0, 221);
   color: rgb(0, 0, 0);
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
@@ -9,13 +9,36 @@
   margin-top: 20px;
   text-align: center;
   padding: 15px;
-  transition: transform 0.3s;
 }
 
 .customAlert:hover {
-  transform: scale(1.05); /* Enlarge the alert on hover for added emphasis */
+  transform: scale(1.05);
 }
 
 .customAlert p {
   margin-bottom: 5px;
+}
+
+.customAlert button:first-child {
+  background-color: rgb(189, 186, 187);
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 5px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.customAlert button:last-child {
+  background-color: pink;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.customAlert button:hover {
+  background-color: rgb(246, 119, 225);
 }

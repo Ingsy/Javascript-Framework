@@ -5,7 +5,7 @@ const CustomAlert = ({ message, onClose, productTitle }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose();
-    }, 5000);
+    }, 4000);
 
     return () => {
       clearTimeout(timer);

@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { CartContext } from "../../components/Cart/cartContext";
 import BaseButton from "../Buttons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Checkout.module.css";
+import AlertCheckout from "../Alert/AlertCheckout"; // Import the AlertCheckout component
 
 function CheckoutPage() {
   const { cart } = useContext(CartContext);
@@ -37,8 +38,25 @@ function CheckoutPage() {
     totalDiscount += productDiscount * product.quantity;
   });
 
+  const [showAlert, setShowAlert] = useState(false); // State to control the alert visibility
+  const [checkoutInitiated, setCheckoutInitiated] = useState(false); // State to track if checkout has been initiated
+
   const handleCheckout = () => {
-    navigate("/checkout-success");
+    setCheckoutInitiated(true);
+    setShowAlert(true);
+  };
+
+  const handleAlertOk = () => {
+    if (checkoutInitiated) {
+      navigate("/checkout-success");
+    }
+    setShowAlert(false);
+    setCheckoutInitiated(false); // Reset the checkout initiation status
+  };
+
+  const handleAlertClose = () => {
+    setShowAlert(false);
+    setCheckoutInitiated(false); // Reset the checkout initiation status
   };
 
   return (
@@ -112,6 +130,13 @@ function CheckoutPage() {
         Total: ${(totalPrice - totalDiscount).toFixed(2)}
       </p>
       <BaseButton onClick={handleCheckout}>Checkout</BaseButton>
+      {showAlert && (
+        <AlertCheckout
+          message="Proceed with checkout?"
+          onOk={handleAlertOk}
+          onClose={handleAlertClose}
+        />
+      )}
       <p className={styles.ContinueShopping}>
         <Link to="/" className={styles.CheckoutLink}>
           Continue Shopping
