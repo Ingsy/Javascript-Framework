@@ -1,0 +1,21 @@
+.customAlert {
+  background-color: #fcfcfc;
+  border: 2px solid rgb(255, 0, 221); /* Add border with 2px width */
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  max-width: 250px;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s;
+}
+
+.customAlert:hover {
+  transform: scale(1.05); /* Enlarge the alert on hover for added emphasis */
+}
+
+.customAlert p {
+  margin-bottom: 5px;
+}

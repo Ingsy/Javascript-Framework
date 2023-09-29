@@ -4,6 +4,7 @@ import BaseButton from "../Buttons";
 import { CartContext } from "../Cart/cartContext";
 import styles from "./Card.module.css";
 import { Collapse, Button } from "react-bootstrap";
+import CustomAlert from "../Alert";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -13,6 +14,7 @@ function ProductDetails() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showReviews, setShowReviews] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const toggleReviews = () => {
     setShowReviews(!showReviews);
@@ -49,12 +51,24 @@ function ProductDetails() {
 
   const handleAddToCart = () => {
     addToCart(product);
-    alert("This Item was added to your cart");
+    setShowAlert(true);
+  };
+
+  const closeAlert = () => {
+    setShowAlert(false);
   };
 
   return (
     <div className="container">
       <h2 className="mt-3 text-center">{product.title}</h2>
+      {showAlert && (
+        <CustomAlert
+          message="was added to your cart"
+          onClose={closeAlert}
+          productTitle={product.title}
+        />
+      )}
+
       <div className="d-flex justify-content-center">
         <div className={styles.card}>
           <div className="card-body">
