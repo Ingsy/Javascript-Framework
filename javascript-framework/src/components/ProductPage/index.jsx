@@ -1,24 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import ProductList from "../ProductList";
 import Search from "../Search";
+import useProductFetch from "../useProductFetch";
 
 function Products() {
-  const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
-  useEffect(() => {
-    fetch("https://api.noroff.dev/api/v1/online-shop")
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
-      });
-  }, []);
-
-  console.log("Products state:", products);
+  const products = useProductFetch();
 
   const handleSearchChange = useCallback(
     (query) => {
@@ -50,7 +38,12 @@ function Products() {
       ) : (
         <p>Loading products...</p>
       )}
-      <ProductList products={searchQuery ? filteredProducts : products} />
+
+      {searchQuery ? (
+        <ProductList products={filteredProducts} />
+      ) : (
+        <ProductList products={products} />
+      )}
     </div>
   );
 }
