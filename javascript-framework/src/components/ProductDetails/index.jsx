@@ -5,6 +5,7 @@ import { CartContext } from "../Cart/cartContext";
 import styles from "./Card.module.css";
 import { Collapse, Button } from "react-bootstrap";
 import CustomAlert from "../Alert";
+import StarRating from "../StarRating";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -122,7 +123,7 @@ function ProductDetails() {
                         <br />
                         Rating:
                         <span className={styles.ReviewsRating}>
-                          {review.rating}
+                          <StarRating rating={review.rating} />
                         </span>
                         <br />
                         {review.description}
