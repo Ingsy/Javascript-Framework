@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./Search.module.css";
 import { useNavigate } from "react-router-dom";
+import ProductGrid from "../ProductGrid";
 
 function Search({ products, onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -27,9 +28,15 @@ function Search({ products, onSearch }) {
     setSuggestions(filteredSuggestions);
   };
 
+  const clearSuggestions = () => {
+    setSuggestions([]);
+  };
+
   const handleSuggestionClick = (product) => {
     const productDetailUrl = `/product/${product.id}`;
     navigate(productDetailUrl);
+    setSearchQuery("");
+    clearSuggestions();
   };
 
   useEffect(() => {
@@ -62,18 +69,12 @@ function Search({ products, onSearch }) {
         </div>
       </form>
       {suggestions.length > 0 && (
-        <ul className="list-group mt-2">
-          {suggestions.map((product) => (
-            <li
-              key={product.id}
-              className="list-group-item"
-              onClick={() => handleSuggestionClick(product)}
-              style={{ cursor: "pointer" }}
-            >
-              {product.title}
-            </li>
-          ))}
-        </ul>
+        <div>
+          <ProductGrid
+            products={suggestions}
+            onSuggestionClick={handleSuggestionClick}
+          />
+        </div>
       )}
     </div>
   );
