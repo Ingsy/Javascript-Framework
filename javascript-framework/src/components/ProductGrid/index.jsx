@@ -19,7 +19,9 @@ function ProductGrid({ products }) {
             />
             <div className="card-body">
               <h5 className={styles.cardTitle}>{product.title}</h5>
-              <p className={styles.cardPrice}>${product.price.toFixed(2)}</p>
+              <p className={styles.cardPrice}>
+                ${product.discountedPrice.toFixed(2)}
+              </p>
               <Link
                 to={`/product/${product.id}`}
                 className={styles.ViewDetails}
