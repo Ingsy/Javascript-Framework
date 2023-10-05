@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./Search.module.css";
-import { useNavigate } from "react-router-dom";
-import ProductGrid from "../ProductGrid";
 
 function Search({ products, onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  const navigate = useNavigate();
 
   const handleSearchChange = (e) => {
     const query = e.target.value;
@@ -24,19 +20,7 @@ function Search({ products, onSearch }) {
         product.price.toString().includes(query)
       );
     });
-
-    setSuggestions(filteredSuggestions);
-  };
-
-  const clearSuggestions = () => {
-    setSuggestions([]);
-  };
-
-  const handleSuggestionClick = (product) => {
-    const productDetailUrl = `/product/${product.id}`;
-    navigate(productDetailUrl);
-    setSearchQuery("");
-    clearSuggestions();
+    onSearch(filteredSuggestions);
   };
 
   useEffect(() => {
@@ -68,14 +52,6 @@ function Search({ products, onSearch }) {
           </button>
         </div>
       </form>
-      {suggestions.length > 0 && (
-        <div>
-          <ProductGrid
-            products={suggestions}
-            onSuggestionClick={handleSuggestionClick}
-          />
-        </div>
-      )}
     </div>
   );
 }
