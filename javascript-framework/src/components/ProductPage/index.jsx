@@ -3,11 +3,11 @@ import ProductList from "../ProductList";
 import Search from "../Search";
 import useProductFetch from "../useProductFetch";
 
-function Products() {
-  const [filteredProducts, setFilteredProducts] = useState([]);
+function Products({ filterProd }) {
+  const [filteredProducts, setFilteredProducts] = useState(filterProd);
   const [searchQuery, setSearchQuery] = useState("");
   const products = useProductFetch();
-
+  console.log("Products", filterProd);
   const handleSearchChange = useCallback(
     (query) => {
       setSearchQuery(query);
@@ -20,6 +20,8 @@ function Products() {
     },
     [products]
   );
+
+  useEffect(() => {}, [filterProd]);
 
   useEffect(() => {
     console.log("onSearch prop in Products:", typeof handleSearchChange);
@@ -39,7 +41,7 @@ function Products() {
         <p>Loading products...</p>
       )}
 
-      {searchQuery ? (
+      {filteredProducts.length > 0 ? (
         <ProductList products={filteredProducts} />
       ) : (
         <ProductList products={products} />
