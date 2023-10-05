@@ -5,12 +5,12 @@ import useProductFetch from "../useProductFetch";
 
 function Products({ filterProd }) {
   const [filteredProducts, setFilteredProducts] = useState(filterProd);
-  const [searchQuery, setSearchQuery] = useState("");
+
   const products = useProductFetch();
   console.log("Products", filterProd);
+
   const handleSearchChange = useCallback(
     (query) => {
-      setSearchQuery(query);
       if (products && products.length > 0) {
         const filtered = products.filter((product) =>
           product.title.toLowerCase().includes(query.toLowerCase())
