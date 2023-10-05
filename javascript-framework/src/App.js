@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './components/Homepage';
@@ -10,16 +10,25 @@ import ProductDetails from './components/ProductDetails';
 import ProductPage from "./components/ProductPage";
 
 function App() {
+  const [products, setProducts] = useState([]);
 
-  const onSearch = () => {
+  const onProductSearch = (filteredSuggestions) => {
+    setProducts(filteredSuggestions);
   }
+
+  useEffect(() => {
+    fetch(`https://api.noroff.dev/api/v1/online-shop`)
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => console.error(`Error fetching products:`, error));
+  }, []);
 
   return (
     <Routes>
       {/* Define a root route for the homepage */}
-      <Route path="/" element={<Layout onSearch={onSearch} />}>
-        <Route index element={<Home />} />
-        <Route path="products" element={<ProductPage />} />
+      <Route path="/" element={<Layout onSearch={onProductSearch} products={products} />}>
+        <Route index element={<Home filterProd={products} />} />
+        <Route path="products" element={<ProductPage filterProd={products} />} />
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="checkout-success" element={<CheckoutSuccessPage />} />
         <Route path="contact" element={<ContactPage />} />
