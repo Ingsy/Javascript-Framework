@@ -42,6 +42,14 @@ function ContactForm() {
 
     if (isValid) {
       console.log("Form data:", formData);
+      window.alert("Form submitted successfully!");
+
+      setFormData({
+        fullName: "",
+        subject: "",
+        email: "",
+        body: "",
+      });
     }
   };
 
