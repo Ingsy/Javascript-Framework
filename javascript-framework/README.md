@@ -77,3 +77,7 @@ The public GitHub repository for this project can be found [here](https://github
 ## Acknowledgments
 
 This project serves as a starting point for web development using React and various other technologies. It may be customized and extended to meet specific project requirements. If you have any questions or feedback, feel free to reach out.
+
+## References
+
+https://www.pexels.com/nb-no/bilde/solstrale-uskarphet-hendelse-arrangement-7319324/
