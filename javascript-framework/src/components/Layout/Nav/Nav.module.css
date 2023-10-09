@@ -20,11 +20,11 @@
 
 .navbarToggler {
   margin-right: 19px;
-  font-size: 40px;
+  font-size: 30px;
   background-color: transparent;
   border: none;
   font-weight: 100;
-  color: #000000;
+  color: #adb5bd;
 }
 
 .navCollapse {
@@ -58,4 +58,10 @@
 
 .closeIcon {
   border: none;
+}
+
+.disabled {
+  pointer-events: none;
+  color: grey;
+  cursor: not-allowed;
 }

@@ -72,7 +72,14 @@ const Navbar = ({ onSearch }) => {
                 </Link>
               </li>
               <li className={`nav-item ${styles.navItem}`}>
-                <Link to="/ProductPage" className={`${styles.navLink} mx-2`}>
+                <Link
+                  to="/ProductPage"
+                  className={`${styles.navLink} mx-2 ${styles.disabled}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                  aria-disabled="true"
+                >
                   Products
                 </Link>
               </li>
