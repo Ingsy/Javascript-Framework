@@ -98,7 +98,10 @@ function CheckoutPage() {
                     )}
                     {product.discountedPrice && (
                       <p className={styles.CheckoutDiscountedPrice}>
-                        Price: ${product.discountedPrice.toFixed(2)}
+                        Price: $
+                        {(product.discountedPrice * product.quantity).toFixed(
+                          2
+                        )}
                       </p>
                     )}
                     <div className={styles.CheckoutActions}>
