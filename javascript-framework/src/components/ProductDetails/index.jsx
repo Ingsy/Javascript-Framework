@@ -27,6 +27,10 @@ function ProductDetails() {
       .then((data) => {
         setProduct(data);
         setLoading(false);
+
+        window.onload = function () {
+          document.title = data.title || "Product Details";
+        };
       })
       .catch((error) => {
         setError(error);
