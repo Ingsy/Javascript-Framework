@@ -131,3 +131,14 @@
   margin: 0;
   padding: 0;
 }
+
+.EmptyCartMessage {
+  color: #717171;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+a {
+  color: #f87bd3;
+  text-decoration: none;
+}

@@ -61,86 +61,94 @@ function CheckoutPage() {
   return (
     <div className={styles.CheckoutContainer}>
       <h1 className={styles.CheckoutHeader}>Checkout</h1>
-      <div className={styles.CheckoutList}>
-        {cart.map((product) => (
-          <div key={product.id} className={styles.CheckoutItem}>
-            <div className={styles.CheckoutProductInfo}>
-              <img
-                src={product.imageUrl}
-                alt={product.title}
-                className={styles.CheckoutProductImage}
-              />
-              <div className={styles.CheckoutProductDetails}>
-                <h3 className={styles.CheckoutProductName}>{product.title}</h3>
-                <p className={styles.CheckoutProductPrice}>
-                  ${product.price.toFixed(2)}
-                </p>
+      {cart.length === 0 ? (
+        <p className={styles.EmptyCartMessage}>
+          There is nothing in your cart - check out our{" "}
+          <Link to="/" className={styles.ProductLink}>
+            Products
+          </Link>
+        </p>
+      ) : (
+        <div>
+          <div className={styles.CheckoutList}>
+            {cart.map((product) => (
+              <div key={product.id} className={styles.CheckoutItem}>
+                <div className={styles.CheckoutProductInfo}>
+                  <img
+                    src={product.imageUrl}
+                    alt={product.title}
+                    className={styles.CheckoutProductImage}
+                  />
+                  <div className={styles.CheckoutProductDetails}>
+                    <h3 className={styles.CheckoutProductName}>
+                      {product.title}
+                    </h3>
+                    <p className={styles.CheckoutProductPrice}>
+                      ${product.price.toFixed(2)}
+                    </p>
 
-                {product.discountedPrice && (
-                  <p className={styles.CheckoutDiscount}>
-                    Discount: -$
-                    {(
-                      (product.price - product.discountedPrice) *
-                      product.quantity
-                    ).toFixed(2)}
-                  </p>
-                )}
-                {product.discountedPrice && (
-                  <p className={styles.CheckoutDiscountedPrice}>
-                    Price: ${product.discountedPrice.toFixed(2)}
-                  </p>
-                )}
-                <div className={styles.CheckoutActions}>
-                  <div className={styles.QuantityControl}>
-                    <button
-                      className={styles.QuantityButton}
-                      onClick={() => handleDecrementQuantity(product.id)}
-                    >
-                      -
-                    </button>
-                    {product.quantity}
-                    <button
-                      className={styles.QuantityButton}
-                      onClick={() => handleIncrementQuantity(product.id)}
-                    >
-                      +
-                    </button>
+                    {product.discountedPrice && (
+                      <p className={styles.CheckoutDiscount}>
+                        Discount: -$
+                        {(
+                          (product.price - product.discountedPrice) *
+                          product.quantity
+                        ).toFixed(2)}
+                      </p>
+                    )}
+                    {product.discountedPrice && (
+                      <p className={styles.CheckoutDiscountedPrice}>
+                        Price: ${product.discountedPrice.toFixed(2)}
+                      </p>
+                    )}
+                    <div className={styles.CheckoutActions}>
+                      <div className={styles.QuantityControl}>
+                        <button
+                          className={styles.QuantityButton}
+                          onClick={() => handleDecrementQuantity(product.id)}
+                        >
+                          -
+                        </button>
+                        {product.quantity}
+                        <button
+                          className={styles.QuantityButton}
+                          onClick={() => handleIncrementQuantity(product.id)}
+                        >
+                          +
+                        </button>
+                      </div>
+                      <button
+                        className={styles.CheckoutActionButton}
+                        onClick={() => handleRemoveFromCart(product.id)}
+                      >
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          className={styles.TrashIcon}
+                        />
+                      </button>
+                    </div>
                   </div>
-                  <button
-                    className={styles.CheckoutActionButton}
-                    onClick={() => handleRemoveFromCart(product.id)}
-                  >
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      className={styles.TrashIcon}
-                    />
-                  </button>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <p className={styles.SubTotal}>Subtotal: ${totalPrice.toFixed(2)}</p>
-      <p className={styles.CheckoutDiscount}>
-        Discount: -${totalDiscount.toFixed(2)}
-      </p>
-      <p className={styles.CheckoutTotal}>
-        Total: ${(totalPrice - totalDiscount).toFixed(2)}
-      </p>
-      <BaseButton onClick={handleCheckout}>Checkout</BaseButton>
-      {showAlert && (
-        <AlertCheckout
-          message="Proceed with checkout?"
-          onOk={handleAlertOk}
-          onClose={handleAlertClose}
-        />
+          <p className={styles.SubTotal}>Subtotal: ${totalPrice.toFixed(2)}</p>
+          <p className={styles.CheckoutDiscount}>
+            Discount: -${totalDiscount.toFixed(2)}
+          </p>
+          <p className={styles.CheckoutTotal}>
+            Total: ${(totalPrice - totalDiscount).toFixed(2)}
+          </p>
+          <BaseButton onClick={handleCheckout}>Checkout</BaseButton>
+          {showAlert && (
+            <AlertCheckout
+              message="Proceed with checkout?"
+              onOk={handleAlertOk}
+              onClose={handleAlertClose}
+            />
+          )}
+        </div>
       )}
-      <p className={styles.ContinueShopping}>
-        <Link to="/" className={styles.CheckoutLink}>
-          Continue Shopping
-        </Link>{" "}
-      </p>
     </div>
   );
 }

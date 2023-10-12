@@ -72,6 +72,9 @@ export const CartProvider = ({ children }) => {
       if (updatedCart[productIndex].quantity > 1) {
         updatedCart[productIndex].quantity -= 1;
         setCart(updatedCart);
+      } else {
+        updatedCart.splice(productIndex, 1);
+        setCart(updatedCart);
       }
     }
   };
