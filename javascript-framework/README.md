@@ -8,10 +8,8 @@
 - [Setup](#setup)
 - [Scripts](#scripts)
 - [Linting](#linting)
-- [Browserslist](#browserslist)
 - [Deployment](#deployment)
 - [GitHub Repository](#github-repository)
-- [Acknowledgments](#acknowledgments)
 
 ## Introduction
 
@@ -27,6 +25,15 @@ The following technologies and libraries are used in this project:
 - [styled-components](https://styled-components.com/): A CSS-in-JS library for styling React components.
 - [FontAwesome](https://fontawesome.com/): Provides scalable vector icons that can be customized with CSS.
 - [Web Vitals](https://web.dev/vitals/): A toolset for measuring web performance.
+- [react-bootstrap](https://react-bootstrap.github.io/): A library that provides Bootstrap components for React.
+- [react-scripts](https://www.npmjs.com/package/react-scripts): A set of scripts and configuration used by Create React App.
+- [react-dom](https://reactjs.org/docs/react-dom.html): ReactDOM is a package that provides the DOM-specific methods that can be used at the top level of your app.
+- [@fortawesome/fontawesome-svg-core](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers): The core SVG library for Font Awesome.
+- [@fortawesome/free-solid-svg-icons](https://fontawesome.com/how-to-use/on-the-web/setup/importing-icons): Provides a set of free solid icons for Font Awesome.
+- [@fortawesome/react-fontawesome](https://fontawesome.com/how-to-use/on-the-web/setup/using-react): React-specific integration for Font Awesome icons.
+- [@testing-library/jest-dom](https://testing-library.com/docs/queries/about/): A set of custom Jest matchers for testing the state of the DOM.
+- [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/): Provides utilities for testing React components.
+- [@testing-library/user-event](https://testing-library.com/docs/ecosystem-user-event/): A library for simulating user events.
 
 ## Project Structure
 
@@ -34,8 +41,11 @@ The project is organized into the following directories and files:
 
 - **src**: Contains the source code of the application.
   - **components**: Reusable React components used throughout the project.
-  - **pages**: Individual page components for different sections of the application.
-  - **utils**: Utility functions for data fetching and validation.
+  - **pages**: - Home
+  - Contact
+  - Checkout
+  - CheckoutSuccess
+  - **utils**: Utility functions for localStorage.
 - **App.js**: The main application component responsible for routing.
 - **index.js**: The entry point of the application.
 
