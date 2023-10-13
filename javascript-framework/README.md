@@ -62,10 +62,6 @@ To run this project locally, follow these steps:
 
 This project uses ESLint for code linting and follows the configuration provided by `react-app`. Linting helps maintain code quality and consistency.
 
-## Browserslist
-
-The project specifies target browsers and versions for compatibility using the Browserslist configuration. This helps generate appropriate CSS vendor prefixes based on the specified browser support.
-
 ## Deployment
 
 This project is deployed on [Netlify](https://glowing-quokka-a315eb.netlify.app/) and can be accessed [here](https://glowing-quokka-a315eb.netlify.app/).
@@ -73,11 +69,3 @@ This project is deployed on [Netlify](https://glowing-quokka-a315eb.netlify.app/
 ## GitHub Repository
 
 The public GitHub repository for this project can be found [here](https://github.com/Ingsy/Javascript-Framework/tree/main/javascript-framework).
-
-## Acknowledgments
-
-This project serves as a starting point for web development using React and various other technologies. It may be customized and extended to meet specific project requirements. If you have any questions or feedback, feel free to reach out.
-
-## References
-
-https://www.pexels.com/nb-no/bilde/solstrale-uskarphet-hendelse-arrangement-7319324/
