@@ -63,8 +63,8 @@ function CheckoutPage() {
       <h1 className={styles.CheckoutHeader}>Checkout</h1>
       {cart.length === 0 ? (
         <p className={styles.EmptyCartMessage}>
-          There is nothing in your cart - check out our{" "}
-          <Link to="/" className={styles.ProductLink}>
+          There is nothing in your cart - check out{" "}
+          <Link to="/" className={styles.aLink}>
             Products
           </Link>
         </p>

@@ -101,14 +101,14 @@ hr {
 }
 
 .ToggleReviewsBtn {
-  margin-left: 30px;
-  padding: 0;
-  color: grey;
-  text-decoration: none;
+  margin-left: 30px !important;
+  padding: 0 !important;
+  color: #ff00dd !important;
+  text-decoration: none !important;
   cursor: pointer;
   font-size: 18px;
 }
 
 .ToggleReviewsBtn:hover {
-  color: #ff00dd;
+  color: #000000 !important;
 }
