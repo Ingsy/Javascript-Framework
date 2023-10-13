@@ -13,7 +13,7 @@
 
 ## Introduction
 
-This project, named "JavaScript Framework," is a web application built using React. It serves as a foundation for creating web applications with a modern JavaScript framework. The project includes various dependencies and scripts to facilitate development and deployment.
+This project, named "JavaScript Framework," is an eCom store build with React. The project includes various dependencies and scripts to facilitate development and deployment.
 
 ## Technologies Used
 
@@ -34,6 +34,10 @@ The following technologies and libraries are used in this project:
 - [@testing-library/jest-dom](https://testing-library.com/docs/queries/about/): A set of custom Jest matchers for testing the state of the DOM.
 - [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/): Provides utilities for testing React components.
 - [@testing-library/user-event](https://testing-library.com/docs/ecosystem-user-event/): A library for simulating user events.
+
+## API
+
+The API used for fetshing data: [https://api.noroff.dev/api/v1/online-shop]
 
 ## Project Structure
 
