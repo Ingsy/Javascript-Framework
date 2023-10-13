@@ -45,7 +45,8 @@ The project is organized into the following directories and files:
 
 - **src**: Contains the source code of the application.
   - **components**: Reusable React components used throughout the project.
-  - **pages**: - Home
+  - **pages**:
+  - Home
   - Contact
   - Checkout
   - CheckoutSuccess
