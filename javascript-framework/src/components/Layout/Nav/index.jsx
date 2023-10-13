@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Nav.module.css";
@@ -9,6 +10,7 @@ const Navbar = ({ onSearch }) => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const [products, setProducts] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     fetch("https://api.noroff.dev/api/v1/online-shop")
@@ -92,16 +94,20 @@ const Navbar = ({ onSearch }) => {
           </div>
         </ul>
       </div>
-      <div className={`d-lg-none ${isSearchVisible ? "mb-3" : "d-none"}`}>
-        <Search products={products} onSearch={onSearch} />
-      </div>
-      <div
-        className={`ml-auto d-none d-lg-flex ${
-          isSearchVisible ? "" : "d-none"
-        }`}
-      >
-        <Search products={products} onSearch={onSearch} />
-      </div>
+      {location.pathname === "/" && (
+        <div className={`d-lg-none ${isSearchVisible ? "mb-3" : "d-none"}`}>
+          <Search products={products} onSearch={onSearch} />
+        </div>
+      )}
+      {location.pathname === "/" && (
+        <div
+          className={`ml-auto d-none d-lg-flex ${
+            isSearchVisible ? "" : "d-none"
+          }`}
+        >
+          <Search products={products} onSearch={onSearch} />
+        </div>
+      )}
     </nav>
   );
 };
